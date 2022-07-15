@@ -1,0 +1,124 @@
+#
+# For www.
+#
+snippet landscape "Single (landscape) image"
+	<figure class="center">
+	  <div>
+	  <img title="${1:popup tip}" alt="$1" src="" />
+	  </div>
+	  <figcaption>whatever</figcaption>
+	</figure>
+snippet portrait "Single (portrait) image"
+	<figure class="center">
+	  <div style="width: 50%">
+	  <img title="${1:popup tip}" alt="$1" src="" />
+	  </div>
+	  <figcaption>whatever</figcaption>
+	</figure>
+snippet sbs "Two side by side images"
+	<figure class="sidebyside">
+	<div class="row">
+	  <div class="column">
+	  <img title="${1:popup tip}" alt="$1" src="" />
+	  </div>
+	  <div class="column">
+	  <img title="${2:popup tip}" alt="$2" src="" />
+	  </div>
+	</div>
+	  <figcaption>whatever</figcaption>
+	</figure>
+	<!-- to add eg 3 images side by side, add style="width: 33%" to all divs class column. -->
+snippet imgtoc "Top of page: image, TOC, and space"
+	<p><img class="firstimage" src="whatever" /></p>
+	
+	<div id="toc_container">
+	  <p class="toc_title">Contents</p>
+	  <ol class="toc_list">
+	    <li><a href="#whatever">whatever</a></li>
+	  </ol>
+	</div>
+	
+	<div style="display: block; height: 0.80em"></div>
+snippet quote
+	<blockquote>
+	<p>${1:text}<br />
+	—<strong>${2:author}</strong></p>
+	</blockquote>
+snippet asteriskbreak
+	<div style="text-align: center; padding-bottom: 1em"><span>&#8258;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8258;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8258;</span></div>
+#
+# END For blog posts.
+#
+# Footnote code snippet.
+# Source code snippet.
+snippet fn
+	[^${1:footnote number}]
+	
+	[^$1]: ${2:footnote text}
+snippet ~~~
+	~~~ {.${1:language} .numberLines}
+	${2}
+	~~~
+# Markdown comment (requires newline before and after).
+snippet //
+	
+	[//]: # (${1:comment})
+	
+# Spell modeline for vim (in a markdown comment). Requires newline before and
+# after. DO NOT surround with parenthesis, like a regular markdown comment.
+snippet spell
+	
+	[//]: # vim: spell spelllang=en
+	
+#
+# Mathematics. *Grosso modo* same as tex.snippets, except for 
+# text mode environments (theorems, etc), which don't work 
+# with MathJax.
+#
+# Generic but very useful commands.
+snippet c "generic LaTeX \command{}"
+	\${1:cmd}{${2:arg}}${3}
+snippet m "generic LaTeX \macro (no arguments), with an extra \ if required"
+	\${1:macro}\${2}
+# Environments that also work in MathJax.
+snippet align
+	\begin{align}
+		&\phantom{{}={}}${1}
+	\end{align}
+snippet begin
+	\begin{${1:env}}
+		${2}
+	\end{$1}
+snippet equation
+	\begin{equation}
+		${1}
+	\end{equation}
+# Style
+snippet iff "not stricly math, but very useful!"
+	if and only if
+snippet mb "Bold Math (\RequirePackage{bm})"
+	\bm{${1}}${2}
+snippet mbb "Blackboard Math"
+	\mathbb{${1}}${2}
+snippet mc "Math Caligraphy"
+	\mathcal{${1}}${2}
+snippet mi "Italic Math"
+	\mathit{${1}}${2}
+# Arrows and symbols
+snippet eqv "Equivalence in equations"
+	\Leftrightarrow
+snippet la "Small left arrow"
+	\leftarrow
+snippet La "Big left arrow"
+	\Leftarrow
+snippet op "math XOR symbol"
+	\oplus
+snippet ra "Small right arrow"
+	\rightarrow
+snippet Ra "Big right arrow"
+	\Rightarrow
+snippet x "math multiplication symbol"
+	\times
+# Custom math commands, adapted
+snippet frac
+	\frac{${1}}{${2}}${3}

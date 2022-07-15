@@ -1,0 +1,32 @@
+# BiB entry for URL
+snippet gen "generic bib entry"
+	@${1:reftype}{${2:reflabel},
+		title     = "XXX",
+		author    = "XXX",
+		address   = "XXX",
+		edition   = "XXX",
+		editor    = "XXX",
+		isbn      = "XXX",
+		note      = "XXX",
+		number    = "XXX",
+		origdate  = "XXX",
+		publisher = "XXX",
+		url       = "XXX",
+		urldate   = "XXX",
+		volume    = "XXX",
+		year      = "XXX",
+	}
+snippet url "URL bib entry"
+	@misc{${1:reflabel},
+		title   = "XXX",
+		author  = "XXX",
+		url     = "XXX",
+		urldate = "XXX",
+		year    = "XXX"
+	}
+snippet urll "URL bib entry for LNCS"
+	@misc{${1:reflabel},
+		title        = {${2:title}},
+		howpublished = {\url{${3:url}}},
+		note         = {Accessed: ${4:urldate}}
+	}

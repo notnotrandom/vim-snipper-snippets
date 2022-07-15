@@ -1,0 +1,218 @@
+# TeX style
+snippet bf "Bold Text"
+	\textbf{${1}}${2}
+snippet e
+	\emph{${1}}${2}
+snippet it "Italic Text"
+	\textit{${1}}${2}
+snippet l "LaTeX \label{}"
+	\label{${1:arg}}${2}
+snippet lhs "left hand side"
+	left hand side
+snippet m "generic LaTeX \macro (no arguments), with an extra \ if required"
+	\${1:macro}\${2}
+snippet rhs "right hand side"
+	right hand side
+snippet tm "Roman Text, to be used in math mode."
+	\textrm\;\;{${1}}${2}\;\;
+snippet tt "Typewriter Text."
+	\texttt{${1}}${2}
+snippet vs
+	\vspace{5em}
+snippet wrt "with respect to"
+	with respect to
+#
+# Environment stuff (excluding math envs)
+#
+# vim mode line for .tex files.
+snippet modeline
+	% mainfile: ../${1:filename}.tex
+	% vim: spell spelllang=${2:en}
+	${3}
+# \begin{}...\end{}.
+snippet begin
+	\begin{${1:equation}}
+		${2}
+	\end{$1}
+# \begin{}...\end{} with \item.
+snippet begini
+	\begin{${1:env}}
+		\item ${2}
+	\end{$1}
+#
+# Sectioning
+#
+# Chapter
+snippet cha
+	\chapter{${1:chapter name}}
+	\label{cha:${2:`Filename()`}}
+	${3:text}
+	
+	% chapter $1 (end)
+# Section
+snippet sec
+	\section{${1:section name}}
+		\label{sec:${2:section label}}
+		${3:text}
+# Sub Section
+snippet sub
+	\subsection{${1:subsection name}}
+	\label{${2:subsection label}}
+	${3:tbd}
+# Sub Sub Section
+snippet sss
+	\subsubsection{${1:subsubsection name}}
+	\label{${2:subsubsection label}}
+	${3:tbd}
+# Sub Paragraph
+snippet subp
+	\subparagraph{${1:subparagraph name}}
+	\label{${2}}
+	${3}
+#
+# Mathematics
+#
+# Style and (mostly) inline math.
+snippet eqv "Equivalence in equations"
+	\Leftrightarrow
+snippet iff "not stricly math, but very useful!"
+	if and only if
+snippet iid
+	independent and identically distributed
+snippet la "Small left arrow"
+	\leftarrow
+snippet La "Big left arrow"
+	\Leftarrow
+snippet mb "Bold Math (\RequirePackage{bm})"
+	\bm{${1}}${2}
+snippet mbb "Blackboard Math"
+	\mathbb{${1}}${2}
+snippet mc "Math Caligraphy"
+	\mathcal{${1}}${2}
+snippet mi "Italic Math"
+	\mathit{${1}}${2}
+snippet mss "For when math sub or superscript font is too small"
+	\text{\small $${1:math code}$}
+snippet op "math XOR symbol"
+	\oplus
+snippet ra "Small right arrow"
+	\rightarrow
+snippet Ra "Big right arrow"
+	\Rightarrow
+snippet x "math multiplication symbol"
+	\times
+# Custom math commands, adapted
+snippet /
+	\frac{${1}}{${2}}${3}
+# Integral and summation
+snippet sum
+	\sum_{${1}}^{${2}} ${3}
+snippet int
+	\int_{${1}}^{${2}} ${3}
+# Math environments, and definitions
+# Align
+snippet align
+	\begin{align}
+		&\phantom{{}={}}${1}
+	\end{align}
+# Equation
+snippet eq
+	\begin{${1:equation}}
+		${2:% add split subenv for multi-line w/ alignment}
+	\end{$1}
+# Matrix
+snippet matrix 
+	\left( \begin{array}{${1:cc}}
+		% 1 & 2 \\
+		${2:Requires math mode!}
+	\end{array} \right)
+# - Math theorem/proof/def/etc environments.
+# - (optional names are appended to "begin" line, in [ ])
+snippet def "definition environment"
+	\begin{definition}
+		\label{def:${1:label}}
+		${2:definition}
+	\end{definition}
+snippet thm "theorem environment"
+	\begin{theorem}
+		\label{thm:${1:label}}
+		${2:theorem}
+	\end{theorem}
+snippet lem "lemma environment"
+	\begin{lemma}
+		\label{lem:${1:label}}
+		${2:lemma}
+	\end{lemma}
+snippet proof "theorem proof environment"
+	\begin{proof}
+		${1:proof}
+	\end{proof}
+snippet cor "corollary environment"
+	\begin{corollary}
+		\label{cor:${1:label}}
+		${2:corollary}
+	\end{corollary}
+snippet rem "remark environment"
+	\begin{remark}
+		\label{rem:${1:label}}
+		${2:remark}
+	\end{remark}
+#
+# Code
+#
+snippet verb "First choose delimiter, then content (then exit)"
+	\verb${1:+}${2:text}$1${3}
+#
+# Presentation
+#
+snippet sli "Slide with title"
+	\begin{frame}{${1}}
+		${2}
+	\end{frame}
+snippet slic "Centred slide with title"
+	\begin{frame}{${1}}
+		\vfill
+		\begin{center}
+			${2}
+		\end{center}
+		\vfill
+	\end{frame}
+# Itemize for presentations.
+snippet pitemize
+	\begin{itemize}
+		\vfill\item ${1}
+	\end{itemize}
+snippet pitem "\vfill followed by \item"
+	\vfill\item
+snippet imagefill
+	\vfill
+	\begin{center}
+		\includegraphics[scale=0.5]{${1:img}}
+	\end{center}
+	\vfill
+snippet vf "\vfill"
+	\vfill
+#
+# Figures
+#
+# TeX-7 tip: hit Ctrl-X-O for omnicompletion!
+snippet figure "No caps"
+	figure~\ref{fig:${1}}${2}
+snippet Figure "Caps"
+	Figure~\ref{fig:${1}}${2}
+snippet figura "No caps"
+	figura~\ref{fig:${1}}${2}
+snippet Figura "Caps"
+	Figura~\ref{fig:${1}}${2}
+#
+# Tables
+#
+# TeX-7 tip: hit Ctrl-X-O for omnicompletion!
+snippet table "No caps"
+	table~\ref{${1}}${2}
+snippet table "Caps"
+	Table~\ref{${1}}${2}
+snippet tabela "No caps"
+	tabela~\ref{${1}}${2}
+snippet tabela "Caps"
+	Tabela~\ref{${1}}${2}
